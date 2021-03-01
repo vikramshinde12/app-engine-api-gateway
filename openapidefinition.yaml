@@ -1,0 +1,54 @@
+# openapi2-appengine.yaml
+swagger: '2.0'
+info:
+  title: staging
+  description: staging API Gateway with App Engine backend
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /test_apikey:
+    get:
+      summary: Get taste map from wine engine
+      operationId: getTasteMap
+      x-google-backend:
+        address: https://dulce-demo.nw.r.appspot.com
+        path_translation: APPEND_PATH_TO_ADDRESS
+        jwt_audience: 959368492243-5bs8i25l6br96a19mar2bnhfg5u7blqs.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+      security:
+        - api_key: []
+  /test_jwt:
+    get:
+      summary: Get taste map from wine engine
+      operationId: getTasteMap2
+      x-google-backend:
+        address: https://dulce-demo.nw.r.appspot.com
+        path_translation: APPEND_PATH_TO_ADDRESS
+        jwt_audience: 959368492243-5bs8i25l6br96a19mar2bnhfg5u7blqs.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+      security:
+        - jwt: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+  jwt:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "test-api@dulce-demo.iam.gserviceaccount.com"
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/test-api@dulce-demo.iam.gserviceaccount.com"
+    x-google-audiences: "959368492243-5bs8i25l6br96a19mar2bnhfg5u7blqs.apps.googleusercontent.com"
+

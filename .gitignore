@@ -1,0 +1,5 @@
+/venv/
+/dulce-demo-0ac2dabfe5b7.json
+.idea/
+__pycache__/
+*.pyc
