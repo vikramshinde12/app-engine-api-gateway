@@ -3,4 +3,4 @@
 1. Create App Engine backend
 2. Enable IAP for App Engine
 3. Create API Gateway using OpenAPI definition
-4. 
+4. Call the API using api key or JWT.
